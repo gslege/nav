@@ -1821,6 +1821,8 @@ const initSettings = () => {
       const hideDesc = hideDescSwitch.checked;
       const hideLinks = hideLinksSwitch.checked;
       const hideCategory = hideCategorySwitch.checked;
+      const enableFrosted = frostedGlassSwitch.checked;
+      const frostedIntensity = frostedGlassIntensityRange.value;
 
       [cardStyle1Preview, cardStyle2Preview].forEach(card => {
           if (!card) return;
@@ -1829,8 +1831,19 @@ const initSettings = () => {
           const category = card.querySelector('.preview-category');
 
           if (desc) desc.style.display = hideDesc ? 'none' : 'block';
-          if (links) links.style.display = hideLinks ? 'none' : 'flex'; // flex for layout
+          if (links) links.style.display = hideLinks ? 'none' : 'flex'; 
           if (category) category.style.display = hideCategory ? 'none' : 'inline-flex';
+          
+          if (enableFrosted) {
+              card.classList.add('frosted-glass-effect');
+              card.style.setProperty('--frosted-glass-blur', frostedIntensity + 'px');
+              card.classList.remove('bg-white'); // Remove white bg to let frosted effect show (if needed, or frosted class handles it)
+              // Actually frosted class has !important bg-color.
+          } else {
+              card.classList.remove('frosted-glass-effect');
+              card.style.removeProperty('--frosted-glass-blur');
+              card.classList.add('bg-white');
+          }
       });
   }
 
@@ -1863,6 +1876,8 @@ const initSettings = () => {
   if (hideDescSwitch) hideDescSwitch.addEventListener('change', updatePreviewCards);
   if (hideLinksSwitch) hideLinksSwitch.addEventListener('change', updatePreviewCards);
   if (hideCategorySwitch) hideCategorySwitch.addEventListener('change', updatePreviewCards);
+  if (frostedGlassSwitch) frostedGlassSwitch.addEventListener('change', updatePreviewCards);
+  if (frostedGlassIntensityRange) frostedGlassIntensityRange.addEventListener('input', updatePreviewCards);
 
   // AI Provider Elements
   const providerSelector = document.getElementById('providerSelector');

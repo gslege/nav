@@ -945,3 +945,75 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+/* 毛玻璃效果 - Copied from style.css */
+.frosted-glass-effect {
+  background: rgba(255, 255, 255, 0.5) !important;
+  backdrop-filter: blur(var(--frosted-glass-blur, 15px)) !important;
+  -webkit-backdrop-filter: blur(var(--frosted-glass-blur, 15px)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05) !important;
+}
+
+.frosted-glass-effect:hover {
+  background: rgba(255, 255, 255, 0.7) !important;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15) !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+}
+
+/* ========================================= */
+/* 风格二 (Style 2): 垂直布局 - Copied from style.css */
+/* ========================================= */
+.site-card.style-2 .flex.items-start {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.site-card.style-2 .site-icon {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+    width: 3rem; 
+    height: 3rem;
+    transition: transform 0.3s ease;
+}
+
+.site-card.style-2:hover .site-icon {
+    transform: scale(1.1);
+}
+
+.site-card.style-2 .site-icon img,
+.site-card.style-2 .site-icon div {
+    margin: 0 auto;
+}
+
+.site-card.style-2 .site-title {
+    text-align: center;
+    margin-bottom: 0.25rem;
+    display: block;
+    width: 100%;
+}
+
+.site-card.style-2 .flex-1 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.site-card.style-2 .preview-category {
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.site-card.style-2 p {
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.site-card.style-2 .preview-links {
+    margin-top: 0.75rem;
+    justify-content: space-between; 
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
